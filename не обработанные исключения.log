@@ -1,0 +1,55 @@
+C:\soft\vkbot\venv\Scripts\python.exe C:/soft/vkbot/controller.py
+Проверяем не попросили ли каптчу...
+Каптча не была запрошена, все хорошо
+------КАЖЕТСЯ ЭТО ИЗ ЗА ДОЛБАНОЙ МОДАЛКИ ПОСЛЕ АВТОРИЗАЦИИ!!!-------
+Traceback (most recent call last):
+  File "C:/soft/vkbot/controller.py", line 41, in <module>
+    replToUser(driver)
+  File "C:/soft/vkbot/controller.py", line 35, in replToUser
+    functions.delUndreadDialog(driver, vk_id_from_dialog)
+  File "C:\soft\vkbot\functions.py", line 196, in delUndreadDialog
+    driver.find_element_by_css_selector(f"._im_dialog_{vk_id} .nim-dialog--close").click()
+  File "C:\soft\vkbot\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\soft\vkbot\venv\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "C:\soft\vkbot\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\soft\vkbot\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <button type="button" class="nim-dialog--close _im_dialog_close" data-peer="2000000063"></button> is not clickable at point (475, 123). Other element would receive the click: <div class="layerbox_img"></div>
+  (Session info: chrome=86.0.4240.111)
+
+
+
+-А ЭТО КОГДА БОЛЬШЕ НЕ ОСТАЛОСЬ ЮЗЕРОВ С step_script = 0. Тут бы по хорошему автопарсинг новеньких сделать-
+C:\soft\vkbot\venv\Scripts\python.exe C:/soft/vkbot/controller.py
+Проверяем не попросили ли каптчу...
+Каптча не была запрошена, все хорошо
+Traceback (most recent call last):
+Получили id юзера из БД: o
+  File "C:/soft/vkbot/controller.py", line 45, in <module>
+    createDialog(driver)
+  File "C:/soft/vkbot/controller.py", line 12, in createDialog
+    step_script = db_functions.findUserStepScript(vk_id)
+  File "C:\soft\vkbot\db_functions.py", line 18, in findUserStepScript
+    cursor.execute(f"SELECT step_script FROM `vk_users` WHERE `vk_id` = {vk_id} LIMIT 1")
+  File "C:\soft\vkbot\venv\lib\site-packages\pymysql\cursors.py", line 163, in execute
+    result = self._query(query)
+  File "C:\soft\vkbot\venv\lib\site-packages\pymysql\cursors.py", line 321, in _query
+    conn.query(q)
+  File "C:\soft\vkbot\venv\lib\site-packages\pymysql\connections.py", line 505, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\soft\vkbot\venv\lib\site-packages\pymysql\connections.py", line 724, in _read_query_result
+    result.read()
+  File "C:\soft\vkbot\venv\lib\site-packages\pymysql\connections.py", line 1069, in read
+    first_packet = self.connection._read_packet()
+  File "C:\soft\vkbot\venv\lib\site-packages\pymysql\connections.py", line 676, in _read_packet
+    packet.raise_for_error()
+  File "C:\soft\vkbot\venv\lib\site-packages\pymysql\protocol.py", line 223, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "C:\soft\vkbot\venv\lib\site-packages\pymysql\err.py", line 107, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1054, "Unknown column 'o' in 'where clause'")
+
+Process finished with exit code 1
